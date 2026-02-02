@@ -13,10 +13,11 @@ WORKDIR /home/lsst
 # Clone this repo.
 RUN git clone https://github.com/jchiang87/agentic_ai_sandbox
 
-# Install conda requirements
+# Install conda and pip requirements
 RUN source /opt/lsst/software/stack/loadLSST.bash &&\
     setup lsst_distrib &&\
     mamba install -y --file agentic_ai_sandbox/etc/conda_requirements.txt
+    pip install -r agentic_ai_sandbox/etc/pip_requirements.txt
 
 # Make a script to activate the LSST stack
 RUN echo "source /opt/lsst/software/stack/loadLSST.bash" >> .bashrc &&\
