@@ -26,5 +26,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: lsstdesc/imsim-env:latest
+          tags: jchiang87/agentic-ai-sandbox:latest
           build-args: BUILD_DATE=${{ env.NOW }}
