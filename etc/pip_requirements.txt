@@ -7,3 +7,8 @@ ipython
 ipympl
 jupyter
 jupyter_client>=7.4.2
+faiss-cpu
+langchain
+langchain-huggingface
+sentence-transformers
+langchain-community
