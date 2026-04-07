@@ -4,7 +4,7 @@ FROM ghcr.io/lsst/scipipe:al9-w_latest
 # Information about image.
 ARG BUILD_DATE
 LABEL maintainer="https://github.com/jchiang87/agentic_ai_sandbox"
-LABEL description="A Docker image for running the Rubin Science Piplines using AI Agents"
+LABEL description="A Docker image for running the Rubin Science Pipelines using AI Agents"
 LABEL version="latest"
 LABEL build_date=$BUILD_DATE
 
@@ -22,3 +22,6 @@ RUN source /opt/lsst/software/stack/loadLSST.bash &&\
 # Make a script to activate the LSST stack
 RUN echo "source /opt/lsst/software/stack/loadLSST.bash" >> .bashrc &&\
     echo "setup lsst_distrib" >> .bashrc
+
+# Install claude-code CLI
+RUN curl -fsSL https://claude.ai/install.sh | bash
