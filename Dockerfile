@@ -25,4 +25,4 @@ RUN echo "source /opt/lsst/software/stack/loadLSST.bash" >> .bashrc &&\
 
 # Install claude-code CLI
 RUN curl -fsSL https://claude.ai/install.sh | bash &&\
-    mv /home/lsst/.local/bin/claude /user/local/bin/claude
+    mv /home/lsst/.local/bin/claude /usr/local/bin/claude
