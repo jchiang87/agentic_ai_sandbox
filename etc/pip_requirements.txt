@@ -12,4 +12,5 @@ langchain
 langchain-huggingface
 sentence-transformers
 langchain-community
+langchain-anthropic
 fastmcp
