@@ -14,3 +14,4 @@ sentence-transformers
 langchain-community
 langchain-anthropic
 fastmcp
+sentence-transformers
