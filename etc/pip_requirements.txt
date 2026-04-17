@@ -1,6 +1,7 @@
 classy>=3.2.0
 smolagents>=1.23.0
 smolagents[openai]>=1.19.0
+smolagents[mpc]
 pylint
 black
 ipython
