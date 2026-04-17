@@ -13,14 +13,12 @@ WORKDIR /home/lsst
 # Clone this repo.
 RUN git clone https://github.com/jchiang87/agentic_ai_sandbox
 
-# Install conda and pip requirements
+# Install conda and pip requirements, as well as slurm_mcp
 RUN source /opt/lsst/software/stack/loadLSST.bash &&\
     setup lsst_distrib &&\
     mamba install -y --file agentic_ai_sandbox/etc/conda_requirements.txt &&\
-    pip install -r agentic_ai_sandbox/etc/pip_requirements.txt
-
-# Install slurm_mcp
-RUN pip install git+https://github.com/yidong72/slurm_mcp.git
+    pip install -r agentic_ai_sandbox/etc/pip_requirements.txt &&\
+    pip install git+https://github.com/yidong72/slurm_mcp.git
 
 # Make a script to activate the LSST stack
 RUN echo "source /opt/lsst/software/stack/loadLSST.bash" >> .bashrc &&\
