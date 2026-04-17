@@ -19,6 +19,9 @@ RUN source /opt/lsst/software/stack/loadLSST.bash &&\
     mamba install -y --file agentic_ai_sandbox/etc/conda_requirements.txt &&\
     pip install -r agentic_ai_sandbox/etc/pip_requirements.txt
 
+# Install slurm_mcp
+RUN pip install git+https://github.com/yidong72/slurm_mcp.git
+
 # Make a script to activate the LSST stack
 RUN echo "source /opt/lsst/software/stack/loadLSST.bash" >> .bashrc &&\
     echo "setup lsst_distrib" >> .bashrc
