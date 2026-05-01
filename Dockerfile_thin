@@ -1,0 +1,43 @@
+FROM almalinux:9.7
+
+# Information about image.
+ARG BUILD_DATE
+LABEL maintainer="https://github.com/jchiang87/agentic_ai_sandbox"
+LABEL description="A Docker image with packages for agentic-AI development"
+LABEL version="latest"
+LABEL build_date=$BUILD_DATE
+
+# Install build dependencies
+RUN dnf install -y \
+    wget \
+    gcc \
+    make \
+    openssl-devel \
+    bzip2-devel \
+    libffi-devel \
+    zlib-devel \
+    readline-devel \
+    sqlite-devel \
+    xz-devel \
+    tar && \
+    dnf clean all
+
+# Build Python 3.13.13 from source
+ARG PYTHON_VERSION=3.13.13
+RUN wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz && \
+    tar -xf Python-${PYTHON_VERSION}.tgz && \
+    cd Python-${PYTHON_VERSION} && \
+    ./configure --enable-optimizations --with-ensurepip=install && \
+    make -j$(nproc) && \
+    make altinstall && \
+    cd .. && \
+    rm -rf Python-${PYTHON_VERSION} Python-${PYTHON_VERSION}.tgz
+
+# Make python3.13 the default python/pip
+RUN alternatives --install /usr/bin/python python /usr/local/bin/python3.13 1 && \
+    alternatives --install /usr/bin/pip pip /usr/local/bin/pip3.13 1
+
+# Clone this repo and install pip requirements.
+RUN git clone https://github.com/jchiang87/agentic_ai_sandbox && \
+    pip install -r agentic_ai_sandbox/etc/pip_requirements.txt && \
+    pip install git+https://github.com/yidong72/slurm_mcp.git
