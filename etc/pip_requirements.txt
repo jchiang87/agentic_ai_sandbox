@@ -1,7 +1,7 @@
 classy>=3.2.0
 smolagents>=1.23.0
 smolagents[openai]>=1.19.0
-smolagents[mpc]
+smolagents[mcp]
 pylint
 black
 ipython
@@ -14,7 +14,6 @@ langchain-huggingface
 sentence-transformers
 langchain-community
 langchain-anthropic
-mcp
 sentence-transformers
 pytest>=8.0
 pytest-asyncio>=0.23
